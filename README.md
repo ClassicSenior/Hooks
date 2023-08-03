@@ -2,7 +2,7 @@
 This quick module allows you to stop Remote Events and Remote Functions from firing
 
 > [!NOTE]
-> These hooks are not ment for server siding! These just stop client sided events to send to the server!
+> These hooks are not ment for server siding! These just stop client sided events from sending to the server!
 
 ### Loadstring
 Place this above all the requests u make to the module (Dont put it in a function either.)
