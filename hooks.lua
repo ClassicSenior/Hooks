@@ -1,4 +1,4 @@
-function namecall(namecallname, callmethodd)
+local function namecall(namecallname, callmethodd)
     local eventbypass
     eventbypass = hookmetamethod(game, "__namecall", function(self, ...)
     local method = getnamecallmethod()
