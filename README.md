@@ -5,3 +5,6 @@ This quick module allows you to stop Remote Events and Remote Functions from fir
 > These hooks are not ment for server siding! These just stop client sided events to send to the server!
 
 ### Loadstring
+```lua
+loadstring(game:HttpGet(""))()
+```
