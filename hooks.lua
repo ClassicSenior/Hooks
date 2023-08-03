@@ -1,4 +1,4 @@
-local function namecall(namecallname, callmethodd)
+function namecall(namecallname, callmethodd)
     local method = getnamecallmethod()
     local args = {...}
 
