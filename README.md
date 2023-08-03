@@ -7,7 +7,7 @@ This quick module allows you to stop Remote Events and Remote Functions from fir
 ### Loadstring
 Place this above all the requests u make to the module (Dont put it in a function either.)
 ```lua
-local hooks = loadstring(game:HttpGet("https://raw.githubusercontent.com/HyptoHax/Hooks/main/hooks.lua"))()
+local hooks = loadstring(game:HttpGet("https://raw.githubusercontent.com/HyptoHax/Hooks/main/hooks.lua"),true)();
 ```
 
 ### Using
