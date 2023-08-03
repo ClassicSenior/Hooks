@@ -7,7 +7,7 @@ This quick module allows you to stop Remote Events and Remote Functions from fir
 ### Loadstring
 Place this above all the requests u make to the module (Dont put it in a function either.)
 ```lua
-local hooks = loadstring(game:HttpGet("https://raw.githubusercontent.com/HyptoHax/Hooks/main/hooks.lua"),true)();
+local ezhooks = loadstring(game:HttpGet("https://raw.githubusercontent.com/HyptoHax/Hooks/main/hooks.lua"),true)();
 ```
 
 ### Using
@@ -20,13 +20,13 @@ We wanna make an infinite stamina for a game and to do that we would stop the "l
 
 So this is what we do.
 ```lua
-hooks:namecall("lowerstamina", "FireServer")
+ezhooks:namecall("lowerstamina", "FireServer")
 ```
 This fires our module stopping the "FireServer" on "LowerStamina" from firing!
 We have two properties on the module, One is the remote's name and the other one is the event.
 If we would use an Remote Function it then we would use
 ```lua
-hooks:namecall("lowerstamina", "InvokeServer")
+ezhooks:namecall("lowerstamina", "InvokeServer")
 ```
 
 > [!NOTE]
