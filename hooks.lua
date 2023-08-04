@@ -26,7 +26,7 @@ function ezhooks:toggleHook(eventName, fireType, value)
         if activeHooks[hookKey] then
             return -- Hook is already active, no need to activate again
         end
-        activeHooks[hookKey] = hookfunction(remoteEvent[fireType], suppressFireServer)
+        activeHooks[hookKey] = hookfunction(remoteEvent[fireType], ezhooks:namecallHook)
     else
         if not activeHooks[hookKey] then
             return -- Hook is already inactive, no need to deactivate again
