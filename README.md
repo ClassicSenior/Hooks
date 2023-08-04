@@ -4,30 +4,27 @@ This quick module allows you to stop Remote Events and Remote Functions from fir
 > [!NOTE]
 > These hooks are not ment for server siding! These just stop client sided events from sending to the server!
 
-### Loadstring
+## Loadstring
 Place this above all the requests u make to the module (Dont put it in a function either.)
 ```lua
 local ezhooks = loadstring(game:HttpGet("https://raw.githubusercontent.com/HyptoHax/Hooks/main/hooks.lua"),true)();
 ```
 
-### Using
-Quick explenation on how to use it.
-
-_For example_ we have a function named "lowerstamina" in a Remote Event (Keep track of the "Event"),
-Because its a Remote Event we would call it "FireServer", If its an Remote Function we would call it like "InvokeServer".
-
-We wanna make an infinite stamina for a game and to do that we would stop the "lowerstamina" event from firing!
-
-So this is what we do.
+## Using
+###Normal:
 ```lua
-ezhooks:namecall("lowerstamina", "FireServer")
+ezhooks:namecallHook("EventName", "FireType")
 ```
-This fires our module stopping the "FireServer" on "LowerStamina" from firing!
-We have two properties on the module, One is the remote's name and the other one is the event.
-If we would use an Remote Function it then we would use
+
+##Toggeling:
 ```lua
-ezhooks:namecall("lowerstamina", "InvokeServer")
+ezhooks:toggleHook("EventName", "FireType", Value)
 ```
+
+##Variables:
+**EventName:** Name of the event you want to control.
+**FireType:** Type of firing in the event: "FireServer" for RemoteEvents and "InvokeServer" for RemoteFunctions.
+**Value:** A boolean value (true or false) to enable or disable the event hook. (U can just use the value ur ui lib uses to toggle)
 
 > [!NOTE]
 > For RemoteEvents use "FireServer", For RemoteFunctions use "InvokeServer"!
