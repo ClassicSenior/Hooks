@@ -20,7 +20,9 @@ function ezhooks:toggleHook(eventName, fireType, value)
         return -- RemoteEvent not found or incorrect type, do not proceed
     end
 
-    if value then
+    local toggleValue = (type(value) == "string") and (value:lower() == "true")
+
+    if toggleValue then
         if activeHooks[hookKey] then
             return -- Hook is already active, no need to activate again
         end
