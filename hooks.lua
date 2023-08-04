@@ -13,13 +13,18 @@ function ezhooks:namecallHook(namecallname, callmethodd)
     end)
 end
 
-function ezhooks:toggleHook(eventName, fireType, value)
+function Hooks:toggleHook(eventName, fireType, value)
     local hookKey = eventName .. ":" .. fireType
+    local remoteEvent = game:GetService("ReplicatedStorage"):FindFirstChild(eventName)
+    if not remoteEvent or not remoteEvent:IsA("RemoteEvent") then
+        return -- RemoteEvent not found or incorrect type, do not proceed
+    end
+
     if value then
         if activeHooks[hookKey] then
             return -- Hook is already active, no need to activate again
         end
-        activeHooks[hookKey] = hookmetamethod(game:GetService("ReplicatedStorage")[eventName], fireType, namecallHook)
+        activeHooks[hookKey] = hookmetamethod(remoteEvent, fireType, namecallHook)
     else
         if not activeHooks[hookKey] then
             return -- Hook is already inactive, no need to deactivate again
@@ -28,6 +33,5 @@ function ezhooks:toggleHook(eventName, fireType, value)
         activeHooks[hookKey] = nil
     end
 end
-
 
 return ezhooks
