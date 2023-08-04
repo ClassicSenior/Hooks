@@ -1,15 +1,24 @@
 local ezhooks = {}
 local activeHooks = {}
 
-function ezhooks:namecallHook(namecallname, callmethodd)
-    return function(self, ...)
-        local method = getnamecallmethod()
-        local args = {...}
-        if not checkcaller() and self.Name == namecallname and method == callmethodd then
-            return wait(9e9)
-        end
-        return self[callmethodd](self, ...)
+function ezhooks:namecallHook(self, ...)
+    local method = getnamecallmethod()
+    local args = {...}
+    local hookKey = self.Name .. ":" .. method
+    if not checkcaller() and activeHooks[hookKey] then
+        return -- Suppress the FireServer call if the hook is active
     end
+    return self[method](self, ...)
+end
+
+local function namecallHook(self, ...)
+    local method = getnamecallmethod()
+    local args = {...}
+    local hookKey = self.Name .. ":" .. method
+    if not checkcaller() and activeHooks[hookKey] then
+        return -- Suppress the FireServer call if the hook is active
+    end
+    return self[method](self, ...)
 end
 
 function ezhooks:toggleHook(eventName, fireType, value)
@@ -25,7 +34,7 @@ function ezhooks:toggleHook(eventName, fireType, value)
         if activeHooks[hookKey] then
             return -- Hook is already active, no need to activate again
         end
-        activeHooks[hookKey] = hookfunction(remoteEvent[fireType], self:namecallHook(eventName, fireType))
+        activeHooks[hookKey] = hookfunction(remoteEvent[fireType], namecallHook)
     else
         if not activeHooks[hookKey] then
             return -- Hook is already inactive, no need to deactivate again
@@ -35,4 +44,4 @@ function ezhooks:toggleHook(eventName, fireType, value)
     end
 end
 
-return ezhooks
+return Hooks
