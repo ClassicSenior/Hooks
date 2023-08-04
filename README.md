@@ -23,7 +23,9 @@ ezhooks:toggleHook("EventName", "FireType", Value)
 
 ## Variables:
 **EventName:** Name of the event you want to control.
+
 **FireType:** Type of firing in the event: "FireServer" for RemoteEvents and "InvokeServer" for RemoteFunctions.
+
 **Value:** A boolean value (true or false) to enable or disable the event hook. (U can just use the value ur ui lib uses to toggle)
 
 > [!NOTE]
