@@ -2,15 +2,14 @@ local ezhooks = {}
 local activeHooks = {}
 
 function ezhooks:namecallHook(namecallname, callmethodd)
-    local eventbypass
-    eventbypass = hookmetamethod(game, "__namecall", function(self, ...)
+    return function(self, ...)
         local method = getnamecallmethod()
         local args = {...}
         if not checkcaller() and self.Name == namecallname and method == callmethodd then
-            return wait(9e9);
+            return wait(9e9)
         end
-        return eventbypass(self, ...)
-    end)
+        return self[callmethodd](self, ...)
+    end
 end
 
 function ezhooks:toggleHook(eventName, fireType, value)
@@ -26,7 +25,7 @@ function ezhooks:toggleHook(eventName, fireType, value)
         if activeHooks[hookKey] then
             return -- Hook is already active, no need to activate again
         end
-        activeHooks[hookKey] = hookfunction(remoteEvent[fireType], ezhooks:namecallHook)
+        activeHooks[hookKey] = hookfunction(remoteEvent[fireType], self:namecallHook(eventName, fireType))
     else
         if not activeHooks[hookKey] then
             return -- Hook is already inactive, no need to deactivate again
