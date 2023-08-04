@@ -1,4 +1,6 @@
-local function namecall(namecallname, callmethodd)
+local ezhooks = {}
+
+function ezhoosk:namecall(namecallname, callmethodd)
     local eventbypass
     eventbypass = hookmetamethod(game, "__namecall", function(self, ...)
         local method = getnamecallmethod()
@@ -9,3 +11,5 @@ local function namecall(namecallname, callmethodd)
         return eventbypass(self, ...)
     end)
 end
+
+return ezhooks
