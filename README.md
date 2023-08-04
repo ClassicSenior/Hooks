@@ -6,9 +6,16 @@ This quick module allows you to stop Remote Events and Remote Functions from fir
 
 ## Loadstring
 Place this above all the requests u make to the module (Dont put it in a function either.)
+### Normal:
 ```lua
 local ezhooks = loadstring(game:HttpGet("https://raw.githubusercontent.com/HyptoHax/Hooks/main/hooks.lua"),true)();
 ```
+### Beta:
+```lua
+local ezhooks = loadstring(game:HttpGet("https://raw.githubusercontent.com/HyptoHax/Hooks/main/beta.lua"),true)();
+```
+> [!WARNING]
+> The beta build might be very unstable and not use able!
 
 ## Using
 ### Normal:
