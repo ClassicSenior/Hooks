@@ -21,7 +21,7 @@ local function namecallHook(self, ...)
     return self[method](self, ...)
 end
 
-function ezooks:toggleHook(eventName, fireType, value)
+function ezhooks:toggleHook(eventName, fireType, value)
     local hookKey = eventName .. ":" .. fireType
     local remoteEvent = game:GetService("ReplicatedStorage"):FindFirstChild(eventName)
     if not remoteEvent or not remoteEvent:IsA("RemoteEvent") then
